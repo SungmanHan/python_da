@@ -30,19 +30,14 @@ cal1 = Calculator()
 
 while True:
     try:
+        three = input("연산 종류 (+,-,*,/) : ")
         one = int(input("첫 번째 입력값 : "))
         two = int(input("두 번째 입력값 : "))
         cal1.setData(one, two)
 
-        three = input("연산 종류 (+,-,*,/) : ")
+        test = lambda x: {"+": cal1.add(), "-": cal1.sub(), "*": cal1.mul(), "/": cal1.div()}.get(x, "연산 종류가 틀리다")
 
-        if three in ["+", "-", "*", "/"]:
-            test = {"+": cal1.add(), "-": cal1.sub(), "*": cal1.mul(), "/": cal1.div()}
-            print("결과 : ", test[three])
-            print("-" * 20)
-        else:
-            print("없는 연산 종류 입력 프로그램 종료")
-            print("-" * 20)
-            break
+        print("결과 : ", test(three))
+
     except Exception as e:
         print("숫자를 입력하세요.")
